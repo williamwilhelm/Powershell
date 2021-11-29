@@ -1,0 +1,9 @@
+$User1 = Read-Host -Prompt 'Enter the username of the employee you wish to change'
+
+Get-ADUser -Identity $User1
+    Add-ADGroupMember -Identity "Group_Name" -Members $User1
+$group = get-adgroup "Group_Name" -properties @("primaryGroupToken"); get-aduser $User1 | set-aduser -replace @{primaryGroupID=$group.primaryGroupToken}  
+Get-ADPrincipalGroupMembership $User1| foreach {Remove-ADGroupMember $_ -Members $User1 -Confirm:$false}
+Disable-ADAccount $User1
+Get-ADUser -Identity $User1 | Move-ADObject -TargetPath "PathToDisabledUsersOU"
+Get-ADUser -Identity $User1 
