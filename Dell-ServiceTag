@@ -1,0 +1,3 @@
+$User1 = wmic bios get serialnumber
+Get-ADComputer $env:COMPUTERNAME -Properties Description
+Set-ADComputer $env:COMPUTERNAME -Description "$($computer.Description) $User1"
