@@ -1,0 +1,44 @@
+#This checks the BIOS version per Model Number and Updates the BIOS id needed.Some may need multiple updates. Suspends Bitlocker.
+$value = Get-WmiObject -Class:Win32_ComputerSystem | Select-Object Model
+if (($value -like "*790*")) {
+write-host ("Model is Optiplex 790. Checking BIOS..")
+New-Item -Path 'C:\BIOS\' -ItemType Directory
+Copy-Item -path "\ScriptPath" -destination "C:\BIOS\"
+C:\BIOS\790Biosupdater.ps1
+} 
+elseif (($value -like "*990*")) {
+write-host ("Model is Optiplex 990. Checking BIOS..")
+New-Item -Path 'C:\BIOS\' -ItemType Directory
+Copy-Item -path "\ScriptPath" -destination "C:\BIOS\"
+C:\BIOS\990Biosupdater.ps1
+} 
+elseif (($value -like "*7010*")) {
+write-host ("Model is Optiplex 7010. Checking BIOS..")
+New-Item -Path 'C:\BIOS\' -ItemType Directory
+Copy-Item -path "ScriptPath" -destination "C:\BIOS\"
+C:\BIOS\7010Biosupdater.ps1
+} 
+elseif (($value -like "*7020*")) {
+write-host ("Model is Optiplex 7020. Checking BIOS..")
+New-Item -Path 'C:\BIOS\' -ItemType Directory
+Copy-Item -path "ScriptPath" -destination "C:\BIOS\"
+C:\BIOS\7020Biosupdater.ps1
+} 
+elseif (($value -like "*9010*")) {
+write-host ("Model is Optiplex 9010. Checking BIOS..")
+New-Item -Path 'C:\BIOS\' -ItemType Directory
+Copy-Item -path "\ScriptPath" -destination "C:\BIOS\"
+C:\BIOS\9010Biosupdater.ps1
+} 
+elseif (($value -like "*9020*")) {
+write-host ("Model is Optiplex 9020. Checking BIOS..")
+New-Item -Path 'C:\BIOS\' -ItemType Directory
+Copy-Item -path "\ScriptPath" -destination "C:\BIOS\"
+C:\BIOS\9020Biosupdater.ps1
+} 
+if (($value -like "*5040*")) {
+write-host ("Model is Optiplex 5040. Checking BIOS..")
+New-Item -Path 'C:\BIOS\' -ItemType Directory
+Copy-Item -path "\ScriptPath" -destination "C:\BIOS\"
+C:\BIOS\5040Biosupdater.ps1
+} 
