@@ -1,0 +1,9 @@
+Move-ADObject –Identity "CN=$env:computername,CN=Computers,DC=domain,DC=corp" -TargetPath "OU=ProperOU,DC=Domain,DC=corp"
+gpupdate /force
+$User1 = wmic bios get serialnumber
+Get-ADComputer $env:COMPUTERNAME -Properties Description
+Set-ADComputer $env:COMPUTERNAME -Description "$($computer.Description) $User1"
+Initialize-Tpm -AllowClear $true
+set-location HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce
+new-itemproperty . MyKey -propertytype String -value "Powershell c:\windows\system32\bitlocker.ps1"
+Restart-Computer
