@@ -1,0 +1,130 @@
+set-executionpolicy -scope CurrentUser -executionPolicy Bypass -Force
+If (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator))
+{
+  # Relaunch as an elevated process:
+  Start-Process powershell.exe "-File",('"{0}"' -f $MyInvocation.MyCommand.Path) -Verb RunAs
+  exit
+}
+$value = Get-WmiObject -Class Win32_BIOS | Select-Object Manufacturer, SMBIOSBIOSVersion
+if (($value -like "*A29*")) {
+write-host ("BIOS is up to date!")
+} 
+elseif (($value -like "*A28*")) {
+    Write-Host ("Version is A28, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A26*")) {
+    Write-Host ("Version is A26, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A25*")) {
+    Write-Host ("Version is A25, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\exe path -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A24*")) {
+    Write-Host ("Version is A24, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A23*")) {
+    Write-Host ("Version is A23, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A22*")) {
+    Write-Host ("Version is A22, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A21*")) {
+    Write-Host ("Version is A21, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A20*")) {
+    Write-Host ("Version is A20, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A19*")) {
+    Write-Host ("Version is A19, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A18*")) {
+    Write-Host ("Version is A18, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A16*")) {
+    Write-Host ("Version is A16, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A15*")) {
+    Write-Host ("Version is A15, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A14*")) {
+    Write-Host ("Version is A14, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A13*")) {
+    Write-Host ("Version is A13, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A12*")) {
+    Write-Host ("Version is A12, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A09*")) {
+    Write-Host ("Version is A09, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A05*")) {
+    Write-Host ("Version is A05, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A04*")) {
+    Write-Host ("Version is A04, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    elseif (($value -like "*A01*")) {
+    Write-Host ("Version is A01, Installing A29")
+    Suspend-BitLocker -MountPoint "C:" 
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
+    else{
+    Suspend-BitLocker -MountPoint "C:"
+    Copy-Item -path "\\exe path" -destination "C:\" -verbose
+    C:\O7010A29.exe
+    }
