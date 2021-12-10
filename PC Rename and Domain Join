@@ -1,0 +1,6 @@
+$hostname = read-host 'hostname'
+$Domain = 'domain.corp' 
+$Credential = Get-Credential
+
+Rename-Computer $hostname
+Add-Computer -Domain $Domain -NewName $hostname -Credential $Credential -Restart -Force
