@@ -1,0 +1,24 @@
+$TPM = get-tpm | Select-Object tpmpresent
+$TPMR = get-tpm | Select-Object tpmready
+$BL = Get-BitLockerVolume | Select-Object volumestatus
+if (($TPM -like "*False*")) {
+read-host ("TPM is turned off and must be enabled in BIOS via F2. Press enter to reboot.")
+set-location HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce
+new-itemproperty . MyKey -propertytype String -value "Powershell C:\IT-INSTALLS\PS-Scripts\TPM-test.ps1"
+Restart-Computer
+} 
+elseif ( ($TPM -like "*True*") -and` ($TPMR -like "*False*") -and` ($BL -like "*FullyDecrypted*")) {
+    Initialize-Tpm -AllowClear $true 
+    set-location HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce
+new-itemproperty . MyKey -propertytype String -value "Powershell C:\IT-INSTALLS\PS-Scripts\bitlocker.ps1"
+Restart-Computer
+    }
+    elseif (($TPM -like "*True*") -and` ($TPMR -like "*True*") -and` ($BL -like "*FullyDecrypted*")) {
+    Initialize-Tpm -AllowClear $true 
+    set-location HKCU:\Software\Microsoft\Windows\CurrentVersion\RunOnce
+new-itemproperty . MyKey -propertytype String -value "Powershell C:\IT-INSTALLS\PS-Scripts\bitlocker.ps1"
+Restart-Computer
+    }
+    elseif (($TPM -like "*True*") -and` ($TPMR -like "*True*") -and` ($BL -like "*FullyEncrypted*")) {
+    Write-Host ("Drive already encrypted!")
+    }
